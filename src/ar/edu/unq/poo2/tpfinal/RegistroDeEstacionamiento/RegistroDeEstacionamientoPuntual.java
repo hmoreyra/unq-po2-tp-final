@@ -1,14 +1,16 @@
 package ar.edu.unq.poo2.tpfinal.RegistroDeEstacionamiento;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import ar.edu.unq.poo2.tpfinal.ZonaDeEstacionamiento.*;
 
 public class RegistroDeEstacionamientoPuntual extends RegistroDeEstacionamiento{
 	
-	int horasEstacionamiento;
+	public LocalTime horasEstacionamiento;
 	
-	public RegistroDeEstacionamientoPuntual(String patente, int horasEstacionamiento, LocalDateTime fechaYHoraDeInicio, ZonaDeEstacionamiento zonaDeEstacionamiento) {
+	public LocalTime fechaYHoraDeInicio;
+	
+	public RegistroDeEstacionamientoPuntual(String patente, LocalTime horasEstacionamiento, LocalTime fechaYHoraDeInicio, ZonaDeEstacionamiento zonaDeEstacionamiento) {
 		this.patente = patente;
 		this.horasEstacionamiento = horasEstacionamiento;
 		this.fechaYHoraDeInicio = fechaYHoraDeInicio;
@@ -16,7 +18,7 @@ public class RegistroDeEstacionamientoPuntual extends RegistroDeEstacionamiento{
 		this.vigencia = true;
 	}
 	
-	public int getHorasEstacionamiento() {
+	public LocalTime getHorasEstacionamiento() {
 		return this.horasEstacionamiento;
 	}
 	
