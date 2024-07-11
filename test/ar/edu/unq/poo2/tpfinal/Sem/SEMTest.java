@@ -9,14 +9,19 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ar.edu.unq.poo2.tpfinal.Celular.Celular;
 import ar.edu.unq.poo2.tpfinal.EntidadObservadora.*;
 import ar.edu.unq.poo2.tpfinal.Notificacion.*;
+import ar.edu.unq.poo2.tpfinal.RegistroDeCompra.*;
+import ar.edu.unq.poo2.tpfinal.RegistroDeEstacionamiento.*;
+import ar.edu.unq.poo2.tpfinal.ZonaDeEstacionamiento.Infraccion;
+import ar.edu.unq.poo2.tpfinal.ZonaDeEstacionamiento.ZonaDeEstacionamiento;
 
 import static org.mockito.Mockito.*;
 
@@ -29,7 +34,7 @@ public class SEMTest {
 	ZonaDeEstacionamiento zonaA;
 	ZonaDeEstacionamiento zonaB;
 	ZonaDeEstacionamiento zonaC;
-	List<ZonaDeEstacionamiento> zonasDeEstacionamiento;
+	Set<ZonaDeEstacionamiento> zonasDeEstacionamiento;
 	
 	RegistroDeEstacionamientoApp unEstacionamientoApp;
 	RegistroDeEstacionamientoPuntual unEstacionamientoPuntual;
@@ -52,7 +57,7 @@ public class SEMTest {
 		zonaA = mock(ZonaDeEstacionamiento.class);
 		zonaB = mock(ZonaDeEstacionamiento.class);
 		zonaC = mock(ZonaDeEstacionamiento.class);
-		zonasDeEstacionamiento = new ArrayList<ZonaDeEstacionamiento>();
+		zonasDeEstacionamiento = new HashSet<ZonaDeEstacionamiento>();
 		zonasDeEstacionamiento.add(zonaA);
 		zonasDeEstacionamiento.add(zonaB);
 		zonasDeEstacionamiento.add(zonaC);
@@ -494,7 +499,7 @@ public class SEMTest {
 		double unMonto = 200.0;
 		sem24Horas.registrarCliente(unCelular);
 		sem24Horas.cargarCredito(unMonto, unNumCel);
-		List<ZonaDeEstacionamiento> zonasDeEstacionamientoOriginal = sem24Horas.getZonasDeEstacionamiento();
+		Set<ZonaDeEstacionamiento> zonasDeEstacionamientoOriginal = sem24Horas.getZonasDeEstacionamiento();
 		when(unEstacionamientoApp.getZonaDeEstacionamiento()).thenReturn(zonaE);
 		when(unEstacionamientoPuntual.getZonaDeEstacionamiento()).thenReturn(zonaF);
 		
